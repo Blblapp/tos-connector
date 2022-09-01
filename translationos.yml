@@ -1,0 +1,17 @@
+on:
+  branches:
+    - main
+  wait_interval: 10s
+pull_requests:
+  mode: pr_per_lang
+translationos:
+  api_key_secret: MY_TOS_KEY
+files:
+  - translation: professional
+    service_type: premium
+    source_pattern: src/en/*.json
+    source_exclude:
+      - src/en/test.json
+    source_locale: en-GB
+    target_pattern: src/res/{{locale}}/{{original_file}}
+    target_locales: [ 'pt-BR', 'it-IT' ]
