@@ -4,14 +4,27 @@ on:
   wait_interval: 10s
 pull_requests:
   mode: pr_per_lang
-translationos:
-  api_key_secret: MY_TOS_KEY
+  labels:
+    - localization
+    - documentation
+    - translation
+    - bug
 files:
   - translation: professional
     service_type: premium
-    source_pattern: src/en/*.json
-    source_exclude:
-      - src/en/test.json
+    source_pattern: src/res/!(*-*).properties
     source_locale: en-GB
-    target_pattern: src/res/{{locale}}/{{original_file}}
-    target_locales: [ 'pt-BR', 'it-IT' ]
+    target_pattern: src/res/{{original_file_name}}-{{lang_2}}-{{language}}.properties
+    target_locales: ['de-DE', 'ru-RU', 'et-ET']
+  - translation: professional
+    service_type: premium
+    source_pattern: src/res/!(*-*).json
+    source_locale: en-GB
+    target_pattern: src/res/{{original_file_name}}-{{lang_2}}.json
+    target_locales: ['de-DE', 'qu-PE', 'et-ET', 'dd-EE']
+  - translation: professional
+    service_type: premium
+    source_pattern: src/res/!(*-*).md
+    source_locale: en-GB
+    target_pattern: src/res/{{original_file_name}}-{{lang_2}}:{{language}}.md
+    target_locales: ['de-DE', 'qu-PE', 'fr-FR', 'ar-EG', 'ru-RU', 'dd-EE', 'gg-GG']
