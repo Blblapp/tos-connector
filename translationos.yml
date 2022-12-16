@@ -3,6 +3,7 @@ on:
     - main
 pull_requests:
   mode: pr_all_langs
+  automerge: merge
 files:
   - translation: professional
     service_type: premium
